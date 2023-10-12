@@ -15,7 +15,7 @@
     <h1>Pavan Kumar Bathineni speed check</h1>
     <div id="target">Your time</div>
     <div id="counter">Count</div></br>
-    <button type="button">Start Timer</button>
+    <button type="button" onclick="startTime()">Start Timer</button>
     <button type="button" onclick="recordTime()">React</button>
 
     <script>
@@ -25,5 +25,22 @@
             console.log("react time : " + reactTime)
         }
 
+        function startTime() {
+            for (let i = 0; i < 9; i++) {
+                setTimeout(() => {
+                    document.getElementById("counter").innerHTML = i
+                }, (8 - i) * 1000)
+            }
+            setTimeout(() => {
+                if (reactTime == undefined) {
+                    document.getElementById("target").innerHTML = "Too Slow"
+                }
+                else {
+                    let finalTime = Date.now()
+                    let x = Math.abs(finalTime - reactTime)
+                    document.getElementById("target").innerHTML = "Time was " + x
+                }
+            }, 8000)
+        }
     </script>
 </body>
